@@ -1,4 +1,5 @@
 import { getCategories } from "../src/services/get-categories";
+import CategorieGrid from "../src/components/CategorieGrid";
 
 export function getStaticProps() {
   const categories = getCategories();
@@ -10,10 +11,12 @@ export function getStaticProps() {
   };
 }
 
-export default function Categories() {
+export default function Categories({ categories }) {
   return (
     <div>
-      <h1>test2</h1>
+      <h1>Products</h1>
+
+      <CategorieGrid categories={categories} />
     </div>
   );
 }

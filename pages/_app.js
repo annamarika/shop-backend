@@ -1,5 +1,7 @@
 import "../styles/globals.css";
 import "../styles/header.css";
+import "../styles/product.css";
+
 import Layout from "../src/components/Layout";
 
 function MyApp({ Component, pageProps }) {

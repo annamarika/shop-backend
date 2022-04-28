@@ -8,7 +8,7 @@ export default function Product(props) {
   }
 
   function disableDeleteMode() {
-    setIsEditMode(false);
+    setDeleteMode(false);
   }
 
   return (
@@ -23,7 +23,6 @@ export default function Product(props) {
 }
 
 function ProductModeShow({
-  id,
   name,
   description,
   tags,
@@ -32,34 +31,31 @@ function ProductModeShow({
   onEnableDeleteMode,
 }) {
   return (
-    <div>
-      <div>
-        <h5>{name}</h5>
-        <h5>{price}</h5>
-      </div>
-      <div>
-        <p>{description}</p>
-        <p>{category}</p>
-      </div>
-      <ul>
-        <li>{tags}</li>
-      </ul>
-      <div>
-        <button
-          onClick={() => {
-            console.log("Delete product", id, name);
-          }}
-        >
-          Delete
-        </button>
-        <button onClick={onEnableDeleteMode}>Edit</button>
+    <div className="product__containerall">
+      <div className="product__container">
+        <div className="product__h5">
+          <h5>{name}</h5>
+          <h5>{price}</h5>
+        </div>
+        <div className="product__p">
+          <p>{description}</p>
+          <p>{category}</p>
+        </div>
+        <ul>
+          <li>{tags}</li>
+        </ul>
+        <div className="product__buttons">
+          <button className="product__button" onClick={onEnableDeleteMode}>
+            Delete
+          </button>
+          <button className="product__button">Edit</button>
+        </div>
       </div>
     </div>
   );
 }
 
 function ProductModeEdit({
-  id,
   name,
   description,
   tags,
@@ -81,14 +77,8 @@ function ProductModeEdit({
         <li>{tags}</li>
       </ul>
       <div>
-        <button
-          onClick={() => {
-            console.log("Delete product", id, name);
-          }}
-        >
-          Abbrechen
-        </button>
-        <button onClick={onDisableDeleteMode}>Wirklich löschen</button>
+        <button onClick={onDisableDeleteMode}>Abbrechen</button>
+        <button>Wirklich löschen</button>
       </div>
     </div>
   );
