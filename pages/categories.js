@@ -14,7 +14,7 @@ export function getStaticProps() {
 export default function Categories({ categories }) {
   return (
     <div>
-      <h1>Products</h1>
+      <h1>Categories</h1>
 
       <CategorieGrid categories={categories} />
     </div>
