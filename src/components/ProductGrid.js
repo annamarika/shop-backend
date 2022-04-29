@@ -2,7 +2,7 @@ import Product from "./Product";
 
 export default function ProductGrid({ products }) {
   return (
-    <ul>
+    <ul className="products__ul">
       {products.map((product) => (
         <li key={product.id}>
           <Product

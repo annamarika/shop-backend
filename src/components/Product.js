@@ -4,7 +4,7 @@ export default function Product(props) {
   const [isDeleteMode, setDeleteMode] = useState(false);
 
   function enableDeleteMode() {
-    setIsEditMode(true);
+    setDeleteMode(true);
   }
 
   function disableDeleteMode() {
@@ -34,15 +34,21 @@ function ProductModeShow({
     <div className="product__containerall">
       <div className="product__container">
         <div className="product__h5">
-          <h5>{name}</h5>
-          <h5>{price}</h5>
+          <h3>{name}</h3>
+          <h3>{price}€</h3>
         </div>
         <div className="product__p">
           <p>{description}</p>
           <p>{category}</p>
         </div>
-        <ul>
-          <li>{tags}</li>
+        <ul className="product__tags">
+          {tags.map((tag) => {
+            return (
+              <li className="product__tag" key={Product.id}>
+                {tag}
+              </li>
+            );
+          })}
         </ul>
         <div className="product__buttons">
           <button className="product__button" onClick={onEnableDeleteMode}>
@@ -64,21 +70,31 @@ function ProductModeEdit({
   onDisableDeleteMode,
 }) {
   return (
-    <div>
-      <div>
-        <h5>{name}</h5>
-        <h5>{price}</h5>
-      </div>
-      <div>
-        <p>{description}</p>
-        <p>{category}</p>
-      </div>
-      <ul>
-        <li>{tags}</li>
-      </ul>
-      <div>
-        <button onClick={onDisableDeleteMode}>Abbrechen</button>
-        <button>Wirklich löschen</button>
+    <div className="product__containerall">
+      <div className="product__container">
+        <div className="product__h5">
+          <h3>{name}</h3>
+          <h3>{price}€</h3>
+        </div>
+        <div className="product__p">
+          <p>{description}</p>
+          <p>{category}</p>
+        </div>
+        <ul className="product__tags">
+          {tags.map((tag) => {
+            return (
+              <li className="product__tag" key={Product.id}>
+                {tag}
+              </li>
+            );
+          })}
+        </ul>
+        <div className="product__buttons">
+          <button className="product__button" onClick={onDisableDeleteMode}>
+            Abbrechen
+          </button>
+          <button className="product__button">Wirklich löschen</button>
+        </div>
       </div>
     </div>
   );
