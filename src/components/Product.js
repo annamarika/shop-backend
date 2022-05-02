@@ -29,6 +29,7 @@ function ProductModeShow({
   price,
   category,
   onEnableDeleteMode,
+  id,
 }) {
   return (
     <div className="product__containerall">
@@ -44,7 +45,7 @@ function ProductModeShow({
         <ul className="product__tags">
           {tags.map((tag) => {
             return (
-              <li className="product__tag" key={Product.id}>
+              <li className="product__tag" key={id}>
                 {tag}
               </li>
             );
@@ -68,6 +69,7 @@ function ProductModeEdit({
   price,
   category,
   onDisableDeleteMode,
+  id,
 }) {
   return (
     <div className="product__containerall">
@@ -83,7 +85,7 @@ function ProductModeEdit({
         <ul className="product__tags">
           {tags.map((tag) => {
             return (
-              <li className="product__tag" key={Product.id}>
+              <li className="product__tag" key={id}>
                 {tag}
               </li>
             );

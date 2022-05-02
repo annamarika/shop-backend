@@ -1,9 +1,14 @@
 import Categorie from "./Categorie";
+import useSWR from "swr";
 
-export default function CategorieGrid({ categories }) {
+export default function CategorieGrid() {
+  const { data, error } = useSWR("/api/categories");
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
   return (
     <ul className="categories__ul">
-      {categories.map((categorie) => (
+      {data.map((categorie) => (
         <li key={categorie.id}>
           <Categorie
             name={categorie.name}
