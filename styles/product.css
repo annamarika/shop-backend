@@ -44,7 +44,7 @@
 .product__p {
 
     display: flex;
-    flex-direction: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;

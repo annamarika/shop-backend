@@ -11,6 +11,7 @@ export default function CategorieGrid() {
       {data.map((categorie) => (
         <li key={categorie.id}>
           <Categorie
+            id={categorie.id}
             name={categorie.name}
             description={categorie.description}
           />
