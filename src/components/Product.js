@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSWRConfig } from "swr";
 
 export default function Product(props) {
   const [isDeleteMode, setDeleteMode] = useState(false);
@@ -71,6 +72,7 @@ function ProductModeEdit({
   onDisableDeleteMode,
   id,
 }) {
+  const { mutate } = useSWRConfig();
   return (
     <div className="product__containerall">
       <div className="product__container">
@@ -95,7 +97,18 @@ function ProductModeEdit({
           <button className="product__button" onClick={onDisableDeleteMode}>
             Abbrechen
           </button>
-          <button className="product__button">Wirklich löschen</button>
+          <button
+            className="product__button"
+            onClick={async () => {
+              const response = await fetch("/api/product/" + id, {
+                method: "DELETE",
+              });
+              console.log(await response.json());
+              mutate("/api/products");
+            }}
+          >
+            Wirklich löschen
+          </button>
         </div>
       </div>
     </div>
