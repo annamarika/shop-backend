@@ -1,19 +1,13 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import useSWR from "swr";
 
-export default function ProductCreateForm() {
+export default function ProductCreateForm({ categories: data }) {
   const [nameValue, setNameValue] = useState("");
   const [categoryValue, setCategoryValue] = useState("");
   const [priceValue, setPriceValue] = useState("");
   const [descriptionValue, setDescriptionValue] = useState("");
   const [tagsValue, setTagsValue] = useState("");
   const router = useRouter();
-
-  const { data, error } = useSWR("/api/categories");
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
 
   const submit = async (event) => {
     event.preventDefault();
@@ -46,7 +40,7 @@ export default function ProductCreateForm() {
           }}
         />
         <label>Category</label>
-        <input
+        {/* <input
           name="category"
           label="Category"
           type="text"
@@ -54,8 +48,8 @@ export default function ProductCreateForm() {
           onChange={(event) => {
             setCategoryValue(event.target.value);
           }}
-        />
-        {/*<select
+        />*/}
+        <select
           value={categoryValue}
           onChange={(event) => {
             setCategoryValue(event.target.value);
@@ -70,7 +64,7 @@ export default function ProductCreateForm() {
               </>
             );
           })}
-        </select>*/}
+        </select>
         <label>Price</label>
         <input
           name="price"
